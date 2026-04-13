@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Instagram Verify</title>
+  <link rel="stylesheet" href="./apps/instagram/instagram.css">
+</head>
+<body>
+  <main id="instagram-app" class="instagram-app"></main>
+  <div id="done" style="position:fixed;left:-9999px;top:0;">pending</div>
+  <pre id="result" style="position:fixed;left:-9999px;top:0;"></pre>
+  <script src="./apps/instagram/instagram.js"></script>
+  <script>
+    const done = document.getElementById("done");
+    const result = document.getElementById("result");
+    const app = document.getElementById("instagram-app");
+    const tabs = ["home", "reels", "dms", "search", "profile"];
+
+    function sleep(ms) {
+      return new Promise((resolve) => window.setTimeout(resolve, ms));
+    }
+
+    async function waitFor(getter, timeout = 8000) {
+      const startedAt = Date.now();
+      while (Date.now() - startedAt < timeout) {
+        const value = getter();
+        if (value) {
+          return value;
+        }
+        await sleep(50);
+      }
+      throw new Error("waitFor timeout");
+    }
+
+    async function switchTo(tab) {
+      const button = await waitFor(() => app.querySelector(`[data-tab="${tab}"]`));
+      button.click();
+      await sleep(120);
+      return app.querySelector(".instagram-title-button");
+    }
+
+    async function run() {
+      try {
+        await waitFor(() => app.querySelector(".instagram-shell"));
+        const titles = {};
+
+        for (const tab of tabs) {
+          const titleButton = await switchTo(tab);
+          titles[tab] = {
+            present: Boolean(titleButton),
+            action: titleButton ? titleButton.dataset.action : "",
+            text: titleButton ? titleButton.innerText.trim() : ""
+          };
+        }
+
+        await switchTo("profile");
+
+        const editorTrigger = await waitFor(() => app.querySelector('[data-action="open-profile-editor"]'));
+        editorTrigger.click();
+        const promptCard = await waitFor(() => app.querySelector(".instagram-prompt-card"));
+        const promptBody = await waitFor(() => app.querySelector(".instagram-prompt-card__body"));
+        await waitFor(() => app.innerText.includes("资料预设"));
+        await sleep(150);
+
+        const before = {
+          scrollHeight: promptBody.scrollHeight,
+          clientHeight: promptBody.clientHeight,
+          scrollTop: promptBody.scrollTop
+        };
+
+        promptBody.scrollTop = promptBody.scrollHeight;
+        await sleep(150);
+
+        const after = {
+          scrollHeight: promptBody.scrollHeight,
+          clientHeight: promptBody.clientHeight,
+          scrollTop: promptBody.scrollTop
+        };
+
+        result.textContent = JSON.stringify({
+          titles,
+          promptOpen: Boolean(promptCard),
+          promptHeight: promptCard.getBoundingClientRect().height,
+          promptWidth: promptCard.getBoundingClientRect().width,
+          promptTitle: app.querySelector(".instagram-prompt-card__title")?.innerText || "",
+          promptButtons: Array.from(app.querySelectorAll(".instagram-prompt-card__button")).map((item) => item.innerText.trim()),
+          promptPresetVisible: app.innerText.includes("资料预设"),
+          promptScrollBefore: before,
+          promptScrollAfter: after
+        }, null, 2);
+        done.textContent = "done";
+      } catch (error) {
+        result.textContent = JSON.stringify({
+          error: String(error && error.message ? error.message : error)
+        }, null, 2);
+        done.textContent = "error";
+      }
+    }
+
+    window.addEventListener("load", () => {
+      void run();
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,184 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN"><head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Verify WeChat Thread</title>
+  <style>
+    body {
+      margin: 0;
+      min-height: 100vh;
+      display: grid;
+      place-items: center;
+      background: #ece7ef;
+      font-family: "Segoe UI", sans-serif;
+    }
+
+    iframe {
+      width: 430px;
+      height: 932px;
+      border: 0;
+      border-radius: 32px;
+      box-shadow: 0 24px 70px rgba(15, 23, 42, 0.18);
+      background: transparent;
+    }
+  </style>
+</head>
+<body data-ready="boot" data-step="seed">
+  <iframe id="app-frame" src="about:blank"></iframe>
+  <script>
+    document.body.dataset.ready = "boot";
+
+    const openStore = () => new Promise((resolve, reject) => {
+      const request = indexedDB.open("LunaDesktopDB");
+      request.onupgradeneeded = () => {
+        const db = request.result;
+        if (!db.objectStoreNames.contains("store")) {
+          db.createObjectStore("store");
+        }
+      };
+      request.onsuccess = () => resolve(request.result);
+      request.onerror = () => reject(request.error || new Error("open db failed"));
+    });
+
+    const putValue = (db, key, value) => new Promise((resolve, reject) => {
+      const tx = db.transaction("store", "readwrite");
+      tx.objectStore("store").put(value, key);
+      tx.oncomplete = () => resolve();
+      tx.onerror = () => reject(tx.error || new Error(`put ${key} failed`));
+    });
+
+    const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
+
+    const waitFor = async (getter, timeout = 15000) => {
+      const start = Date.now();
+      while (Date.now() - start < timeout) {
+        const value = getter();
+        if (value) return value;
+        await sleep(120);
+      }
+      throw new Error("timeout");
+    };
+
+    const seedWechatChat = async () => {
+      const db = await openStore();
+      const now = new Date().toISOString();
+      const seededChat = [{
+        id: "wechat-chat-verify-xiuxiu-user",
+        fromContact: {
+          id: "char-verify-xiuxiu",
+          type: "CHAR",
+          nickname: "秀秀"
+        },
+        toUser: {
+          id: "user-verify",
+          type: "USER",
+          nickname: "USER"
+        },
+        message: "刚才看你灯熄了还关了门，不是在等我吗？",
+        unread: 0,
+        createdAt: now,
+        updatedAt: now,
+        messages: [
+          {
+            id: "verify-left-1",
+            side: "left",
+            type: "text",
+            text: "怎么还没睡？",
+            createdAt: now,
+            updatedAt: now
+          },
+          {
+            id: "verify-left-2",
+            side: "left",
+            type: "text",
+            text: "刚才看你灯熄了还关了门，不是在等我吗？",
+            createdAt: now,
+            updatedAt: now
+          },
+          {
+            id: "verify-right-1",
+            side: "right",
+            type: "text",
+            text: "我过去干嘛？",
+            createdAt: now,
+            updatedAt: now
+          }
+        ]
+      }];
+      await putValue(db, "isLockEnabled", false);
+      await putValue(db, "wechatFriendRequests", []);
+      await putValue(db, "wechatChats", seededChat);
+      db.close();
+    };
+
+    const openThread = async () => {
+      document.body.dataset.step = "seed";
+      await seedWechatChat();
+      document.body.dataset.step = "load-frame";
+      const frame = document.getElementById("app-frame");
+      frame.src = "/index.html";
+      document.body.dataset.step = "wait-frame";
+      await waitFor(() => frame.contentDocument?.readyState === "complete" ? frame.contentDocument : null);
+      const doc = frame.contentDocument;
+      document.body.dataset.step = "wait-dock";
+      const dock = await waitFor(() => doc.querySelector(".absolute.bottom-0.left-0.right-0.pointer-events-none.flex.flex-col.items-center.z-50 > div:last-child"));
+      const wechatLauncher = dock.children[1];
+      document.body.dataset.step = "click-wechat";
+      wechatLauncher.dispatchEvent(new MouseEvent("click", { bubbles: true, cancelable: true, view: frame.contentWindow }));
+      document.body.dataset.step = "wait-thread";
+      const threadCard = await waitFor(() => doc.querySelector(".wechat-thread-card"));
+      await sleep(300);
+      document.body.dataset.step = "click-thread";
+      threadCard.dispatchEvent(new MouseEvent("click", { bubbles: true, cancelable: true, view: frame.contentWindow }));
+      await sleep(900);
+      document.body.dataset.ready = "true";
+      document.body.dataset.step = "done";
+    };
+
+    openThread().catch((error) => {
+      console.error(error);
+      document.body.dataset.ready = "error";
+      document.body.dataset.step = error && error.message ? error.message : "unknown";
+    });
+  </script>
+<!-- Code injected by live-server -->
+<script>
+	// <![CDATA[  <-- For SVG support
+	if ('WebSocket' in window) {
+		(function () {
+			function refreshCSS() {
+				var sheets = [].slice.call(document.getElementsByTagName("link"));
+				var head = document.getElementsByTagName("head")[0];
+				for (var i = 0; i < sheets.length; ++i) {
+					var elem = sheets[i];
+					var parent = elem.parentElement || head;
+					parent.removeChild(elem);
+					var rel = elem.rel;
+					if (elem.href && typeof rel != "string" || rel.length == 0 || rel.toLowerCase() == "stylesheet") {
+						var url = elem.href.replace(/(&|\?)_cacheOverride=\d+/, '');
+						elem.href = url + (url.indexOf('?') >= 0 ? '&' : '?') + '_cacheOverride=' + (new Date().valueOf());
+					}
+					parent.appendChild(elem);
+				}
+			}
+			var protocol = window.location.protocol === 'http:' ? 'ws://' : 'wss://';
+			var address = protocol + window.location.host + window.location.pathname + '/ws';
+			var socket = new WebSocket(address);
+			socket.onmessage = function (msg) {
+				if (msg.data == 'reload') window.location.reload();
+				else if (msg.data == 'refreshcss') refreshCSS();
+			};
+			if (sessionStorage && !sessionStorage.getItem('IsThisFirstTime_Log_From_LiveServer')) {
+				console.log('Live reload enabled.');
+				sessionStorage.setItem('IsThisFirstTime_Log_From_LiveServer', true);
+			}
+		})();
+	}
+	else {
+		console.error('Upgrade your browser. This Browser is NOT supported WebSocket for Live-Reloading.');
+	}
+	// ]]>
+</script>
+
+
+</body></html>

@@ -1,0 +1,471 @@
+html,
+body {
+  width: 100%;
+  min-height: 100%;
+  margin: 0;
+  background: transparent;
+  color: rgba(255, 255, 255, 0.9);
+  font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+button,
+input,
+textarea {
+  font: inherit;
+}
+
+button {
+  border: 0;
+}
+
+.contact-app {
+  min-height: 100dvh;
+  padding: 60px 24px 128px;
+}
+
+.contact-title {
+  margin: 0 0 40px;
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 24px;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  cursor: pointer;
+}
+
+.contact-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.contact-stack--tight {
+  gap: 20px;
+}
+
+.contact-category {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+
+.contact-category--active {
+  cursor: pointer;
+}
+
+.contact-category__media {
+  width: 172px;
+  aspect-ratio: 3 / 1;
+  display: block;
+  padding: 0;
+  overflow: hidden;
+  cursor: pointer;
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.contact-category__media:focus-visible {
+  outline: 2px solid rgba(255, 255, 255, 0.75);
+  outline-offset: 3px;
+}
+
+.contact-category__media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.contact-category__body {
+  flex: 1;
+  min-width: 0;
+  text-align: left;
+}
+
+.contact-category__title {
+  margin: 4px 0 0;
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 15px;
+  font-weight: 500;
+  letter-spacing: 0.05em;
+}
+
+.contact-category__copy {
+  margin: 8px 0 0;
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 12px;
+  font-weight: 300;
+  letter-spacing: 0.05em;
+}
+
+.contact-empty {
+  margin-top: 40px;
+  text-align: center;
+  color: rgba(255, 255, 255, 0.3);
+  font-size: 14px;
+  font-weight: 300;
+  letter-spacing: 0.1em;
+}
+
+.contact-plus {
+  position: fixed;
+  right: 24px;
+  bottom: 96px;
+  z-index: 50;
+  width: 56px;
+  height: 56px;
+  border-radius: 999px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  background: rgba(255, 255, 255, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  box-shadow: 0 10px 15px rgba(0, 0, 0, 0.18);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  cursor: pointer;
+}
+
+.contact-plus:hover {
+  background: rgba(255, 255, 255, 0.3);
+}
+
+.contact-card {
+  position: relative;
+  min-height: 146px;
+  padding: 14px;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  border-radius: 8px;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.16), rgba(255, 255, 255, 0.08));
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.12);
+  backdrop-filter: blur(32px);
+  -webkit-backdrop-filter: blur(32px);
+}
+
+.contact-card--clickable {
+  cursor: pointer;
+}
+
+.contact-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.12), rgba(255, 255, 255, 0) 72%);
+}
+
+.contact-card__body {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.contact-card__photo {
+  width: 92px;
+  height: 118px;
+  flex: 0 0 auto;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.24);
+  border-radius: 6px;
+  background: rgba(255, 255, 255, 0.14);
+}
+
+.contact-card__photo--button {
+  padding: 0;
+  cursor: pointer;
+}
+
+.contact-card__photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.contact-card__info {
+  flex: 1;
+  min-width: 0;
+  text-align: left;
+}
+
+.contact-card__top {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-width: 0;
+}
+
+.contact-card__nickname {
+  min-width: 0;
+  overflow: hidden;
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.contact-card__gender {
+  flex: 0 0 auto;
+  max-width: 80px;
+  overflow: hidden;
+  padding: 2px 6px;
+  border: 1px solid rgba(255, 255, 255, 0.24);
+  border-radius: 8px;
+  color: rgba(255, 255, 255, 0.72);
+  font-size: 10px;
+  letter-spacing: 0.05em;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.contact-card__line {
+  margin-top: 8px;
+  overflow: hidden;
+  color: rgba(255, 255, 255, 0.72);
+  font-size: 12px;
+  font-weight: 400;
+  letter-spacing: 0.05em;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.contact-card__line--name {
+  color: rgba(255, 255, 255, 0.82);
+}
+
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.contact-field {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.contact-field label {
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+}
+
+.contact-field input,
+.contact-field textarea {
+  width: 100%;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  outline: none;
+  background: rgba(255, 255, 255, 0.05);
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 14px;
+  padding: 12px 16px;
+  transition: border-color 150ms ease;
+}
+
+.contact-field input:focus,
+.contact-field textarea:focus {
+  border-color: rgba(255, 255, 255, 0.3);
+}
+
+.contact-field textarea {
+  height: 160px;
+  resize: none;
+}
+
+.contact-wechat {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  margin-top: 4px;
+}
+
+.contact-wechat__toggle {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+  padding: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.06);
+  color: rgba(255, 255, 255, 0.9);
+  text-align: left;
+  cursor: pointer;
+}
+
+.contact-wechat__toggle:disabled {
+  cursor: not-allowed;
+  opacity: 0.56;
+}
+
+.contact-wechat__toggle--on {
+  border-color: rgba(190, 242, 220, 0.42);
+  background: linear-gradient(135deg, rgba(190, 242, 220, 0.16), rgba(255, 255, 255, 0.07));
+}
+
+.contact-wechat__copy {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.contact-wechat__eyebrow {
+  color: rgba(255, 255, 255, 0.42);
+  font-size: 10px;
+  letter-spacing: 0;
+}
+
+.contact-wechat__copy strong {
+  color: rgba(255, 255, 255, 0.92);
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: 0;
+}
+
+.contact-wechat__copy small {
+  color: rgba(255, 255, 255, 0.56);
+  font-size: 11px;
+  line-height: 1.6;
+}
+
+.contact-wechat__switch {
+  width: 46px;
+  height: 26px;
+  flex: 0 0 auto;
+  position: relative;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.16);
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.16);
+}
+
+.contact-wechat__knob {
+  position: absolute;
+  top: 3px;
+  left: 3px;
+  width: 20px;
+  height: 20px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.9);
+  transition: transform 160ms ease;
+}
+
+.contact-wechat__toggle--on .contact-wechat__switch {
+  background: rgba(190, 242, 220, 0.34);
+}
+
+.contact-wechat__toggle--on .contact-wechat__knob {
+  transform: translateX(20px);
+}
+
+.contact-user-link {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.contact-user-link__title {
+  color: rgba(255, 255, 255, 0.58);
+  font-size: 12px;
+  letter-spacing: 0;
+}
+
+.contact-user-link__grid {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.contact-user-link__item {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.05);
+  color: rgba(255, 255, 255, 0.82);
+  text-align: left;
+  cursor: pointer;
+}
+
+.contact-user-link__item--active {
+  border-color: rgba(255, 231, 241, 0.46);
+  background: rgba(255, 231, 241, 0.12);
+}
+
+.contact-user-link__item img {
+  width: 42px;
+  height: 42px;
+  flex: 0 0 auto;
+  border-radius: 8px;
+  object-fit: cover;
+}
+
+.contact-user-link__body {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.contact-user-link__body strong,
+.contact-user-link__body small {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.contact-user-link__body strong {
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 13px;
+  font-weight: 500;
+}
+
+.contact-user-link__body small,
+.contact-user-link__empty {
+  color: rgba(255, 255, 255, 0.42);
+  font-size: 11px;
+  line-height: 1.5;
+}
+
+.contact-actions {
+  display: flex;
+  gap: 12px;
+  margin-top: 16px;
+}
+
+.contact-action {
+  flex: 1;
+  padding: 12px;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.contact-action--delete {
+  color: #f87171;
+  border: 1px solid rgba(239, 68, 68, 0.3);
+  background: rgba(239, 68, 68, 0.2);
+}
+
+.contact-action--save {
+  flex: 2;
+  color: #000;
+  background: #fff;
+}
+
+.contact-action--solo {
+  flex: 1;
+}

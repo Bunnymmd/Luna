@@ -1,0 +1,396 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN"><head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Instagram Verify</title>
+  <link rel="stylesheet" href="./apps/instagram/instagram.css">
+</head>
+<body>
+  <main id="instagram-app" class="instagram-app">
+      <div class="instagram-shell">
+        <div class="instagram-shell__content">
+          
+      <section class="instagram-profile-page">
+        
+      <header class="instagram-topbar">
+        <div class="instagram-topbar__left">
+          
+          
+      <button class="instagram-title-block instagram-title-button" type="button" data-action="close-app" aria-label="@luna.verse，退出 Instagram&gt;
+        &lt;span class=" instagram-title-button__title"="">@luna.verse
+        <span class="instagram-title-button__subtitle">未关联 USER 身份</span>
+      </button>
+    
+        </div>
+        <div class="instagram-topbar__right">
+          <button type="button" class="instagram-icon-button instagram-icon-button--ghost" data-action="open-profile-settings" aria-label="资料设置"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.25" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" class="instagram-svg instagram-svg--lg"><path d="M4.8 7h14.4"></path><path d="M4.8 12h14.4"></path><path d="M4.8 17h14.4"></path></svg></button>
+        </div>
+      </header>
+    
+        <div class="instagram-profile-card">
+          <div class="instagram-profile-head">
+            <div class="instagram-profile-head__top">
+              
+      <div class="instagram-avatar instagram-avatar--xl instagram-avatar--profile" style="--ig-a:#0a84ff;--ig-b:#8fd6ff;">
+        <div class="instagram-avatar__inner">
+          <div class="instagram-avatar__initials">L</div>
+        </div>
+        
+      </div>
+    
+              <div class="instagram-profile-stats">
+                
+        <button type="button" class="instagram-profile-stat" data-action="open-stat-editor" data-stat-key="posts">
+          <strong class="instagram-profile-stat__value">248</strong>
+          <span>帖子</span>
+        </button>
+      
+        <button type="button" class="instagram-profile-stat" data-action="open-stat-editor" data-stat-key="followers">
+          <strong class="instagram-profile-stat__value">4.2万</strong>
+          <span>粉丝</span>
+        </button>
+      
+        <button type="button" class="instagram-profile-stat" data-action="open-stat-editor" data-stat-key="following">
+          <strong class="instagram-profile-stat__value">623</strong>
+          <span>关注</span>
+        </button>
+      
+              </div>
+            </div>
+            <div class="instagram-profile-bio">
+              <h2>Luna <span class="instagram-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" class="instagram-svg instagram-svg--sm"><path d="m7 12.5 3.1 3.1L17 8.8"></path></svg></span></h2>
+              <div class="instagram-profile-linked">
+                <span class="instagram-profile-linked__eyebrow">关联 USER 身份</span>
+                <strong>未选择 USER 身份</strong>
+                <small>在设置里选择一个 USER 身份后，这里会同步昵称和故事。</small>
+              </div>
+              <p>内容整理 / 视觉设定 / 交互细化</p>
+              <a href="javascript:void(0)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" class="instagram-svg instagram-svg--sm"><path d="M10.1 13.9 8 16a3 3 0 1 1-4.2-4.2l3.1-3.1a3 3 0 0 1 4.2 0"></path><path d="m13.9 10.1 2.1-2.1a3 3 0 1 1 4.2 4.2l-3.1 3.1a3 3 0 0 1-4.2 0"></path><path d="m9 15 6-6"></path></svg> luna.example/kit</a>
+              <p><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" class="instagram-svg instagram-svg--sm"><path d="M12 20.2s5.4-5.7 5.4-10a5.4 5.4 0 1 0-10.8 0c0 4.3 5.4 10 5.4 10Z"></path><circle cx="12" cy="10" r="1.8"></circle></svg> Shanghai, CN</p>
+            </div>
+            <div class="instagram-profile-actions">
+              <button type="button" class="is-secondary" data-action="open-profile-editor">编辑资料</button>
+              <button type="button" class="is-primary" data-action="open-profile-dm">私信</button>
+            </div>
+          </div>
+        </div>
+        <div class="instagram-highlight-row" data-drag-scroll="x" data-no-swipe="true">
+          
+            <div class="instagram-highlight">
+              <div class="instagram-highlight__cover" style="--ig-a:#fd1d1d;--ig-b:#f77737;">
+                <div>L</div>
+              </div>
+              <span class="instagram-story__name">Luna</span>
+            </div>
+          
+        </div>
+        <div class="instagram-segmented">
+          
+            <button type="button" class="is-active" data-action="switch-profile-tab" data-profile-tab="posts" aria-label="帖子">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.15" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" class="instagram-svg instagram-svg--tab"><rect x="4.2" y="4.2" width="6.3" height="6.3" rx="1.3"></rect><rect x="13.5" y="4.2" width="6.3" height="6.3" rx="1.3"></rect><rect x="4.2" y="13.5" width="6.3" height="6.3" rx="1.3"></rect><rect x="13.5" y="13.5" width="6.3" height="6.3" rx="1.3"></rect></svg>
+            </button>
+          
+            <button type="button" class="" data-action="switch-profile-tab" data-profile-tab="reels" aria-label="Reels">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" class="instagram-svg instagram-svg--tab"><rect x="4.2" y="5.1" width="15.6" height="13.8" rx="3.2"></rect><path d="m9.1 5.3 2.7 3.5"></path><path d="m14 5.3 2.8 3.5"></path><path d="m10.2 10.9 4.9 3.1-4.9 3.1z" fill="currentColor" stroke="none"></path></svg>
+            </button>
+          
+            <button type="button" class="" data-action="switch-profile-tab" data-profile-tab="tagged" aria-label="标记">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.15" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" class="instagram-svg instagram-svg--tab"><path d="M20 12.3 11.7 4H5.2v6.5l8.3 8.3z"></path><circle cx="8.5" cy="8.5" r="1.4" fill="currentColor" stroke="none"></circle></svg>
+            </button>
+          
+            <button type="button" class="" data-action="switch-profile-tab" data-profile-tab="saved" aria-label="收藏">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" class="instagram-svg instagram-svg--tab"><path d="M7.1 5.2c0-.8.7-1.5 1.5-1.5h6.8c.8 0 1.5.7 1.5 1.5v14.8L12 16.7l-4.9 3.3z"></path></svg>
+            </button>
+          
+        </div>
+        
+          <div class="instagram-grid">
+            
+              <article class="instagram-grid-card" style="--ig-a:#f58529;--ig-b:#feda77;">
+                <div class="instagram-grid-card__shade"></div>
+                <span class="instagram-grid-card__badge">已关联</span>
+                <span class="instagram-grid-card__title">内容整理 / 视觉设定…</span>
+              </article>
+            
+              <article class="instagram-grid-card" style="--ig-a:#fd1d1d;--ig-b:#f77737;">
+                <div class="instagram-grid-card__shade"></div>
+                <span class="instagram-grid-card__badge">帖子</span>
+                <span class="instagram-grid-card__title">内容整理 / 视觉设定…</span>
+              </article>
+            
+              <article class="instagram-grid-card" style="--ig-a:#dd2a7b;--ig-b:#fcb045;">
+                <div class="instagram-grid-card__shade"></div>
+                <span class="instagram-grid-card__badge">帖子</span>
+                <span class="instagram-grid-card__title">内容整理 / 视觉设定…</span>
+              </article>
+            
+              <article class="instagram-grid-card" style="--ig-a:#c13584;--ig-b:#833ab4;">
+                <div class="instagram-grid-card__shade"></div>
+                <span class="instagram-grid-card__badge">帖子</span>
+                <span class="instagram-grid-card__title">内容整理 / 视觉设定…</span>
+              </article>
+            
+              <article class="instagram-grid-card" style="--ig-a:#5851db;--ig-b:#405de6;">
+                <div class="instagram-grid-card__shade"></div>
+                <span class="instagram-grid-card__badge">帖子</span>
+                <span class="instagram-grid-card__title">内容整理 / 视觉设定…</span>
+              </article>
+            
+              <article class="instagram-grid-card" style="--ig-a:#fcaf45;--ig-b:#e1306c;">
+                <div class="instagram-grid-card__shade"></div>
+                <span class="instagram-grid-card__badge">帖子</span>
+                <span class="instagram-grid-card__title">内容整理 / 视觉设定…</span>
+              </article>
+            
+          </div>
+        
+      </section>
+    
+        </div>
+        
+        
+      <div class="instagram-modal instagram-modal--prompt" data-no-swipe="true">
+        <div class="instagram-modal__backdrop instagram-modal__backdrop--prompt" data-action="go-back"></div>
+        <section class="instagram-prompt-card">
+          <div class="instagram-prompt-card__header">
+            <h3 class="instagram-prompt-card__title">编辑资料</h3>
+          </div>
+          <div class="instagram-prompt-card__body">
+            
+        <div class="instagram-editor-form">
+          <div class="instagram-editor-section">
+            <div class="instagram-editor-avatar">
+              
+      <div class="instagram-avatar instagram-avatar--xl instagram-avatar--profile" style="--ig-a:#0a84ff;--ig-b:#8fd6ff;">
+        <div class="instagram-avatar__inner">
+          <div class="instagram-avatar__initials">L</div>
+        </div>
+        
+      </div>
+    
+              <div class="instagram-editor-avatar__hint">头像跟随当前主页头像显示。</div>
+            </div>
+            <div class="instagram-form-grid">
+              
+      <div class="instagram-field">
+        <label for="instagram-profile-username">用户名</label>
+        
+          <input id="instagram-profile-username" class="instagram-input" data-profile-field="username" data-focus-key="profile-username" type="text" value="luna.verse">
+        
+      </div>
+    
+              
+      <div class="instagram-field">
+        <label for="instagram-profile-name">昵称</label>
+        
+          <input id="instagram-profile-name" class="instagram-input" data-profile-field="name" data-focus-key="profile-name" type="text" value="Luna">
+        
+      </div>
+    
+              
+      <div class="instagram-field">
+        <label for="instagram-profile-bio">简介</label>
+        
+          <textarea id="instagram-profile-bio" class="instagram-textarea" data-profile-field="bio" data-focus-key="profile-bio">内容整理 / 视觉设定 / 交互细化</textarea>
+        
+      </div>
+    
+              
+      <div class="instagram-field">
+        <label for="instagram-profile-link">链接</label>
+        
+          <input id="instagram-profile-link" class="instagram-input" data-profile-field="link" data-focus-key="profile-link" type="text" value="luna.example/kit">
+        
+      </div>
+    
+              
+      <div class="instagram-field">
+        <label for="instagram-profile-location">位置</label>
+        
+          <input id="instagram-profile-location" class="instagram-input" data-profile-field="location" data-focus-key="profile-location" type="text" value="Shanghai, CN">
+        
+      </div>
+    
+            </div>
+          </div>
+          
+      <div class="instagram-editor-section">
+        <div class="instagram-editor-section__header">
+          <strong>资料预设</strong>
+          <small>把当前资料另存为预设，之后可以一键套用。</small>
+        </div>
+        <div class="instagram-profile-linked instagram-preset-summary">
+          <span class="instagram-profile-linked__eyebrow">当前预设绑定</span>
+          <strong>Luna</strong>
+          <small>当前未绑定 USER，预设会按现有资料保存。</small>
+        </div>
+        <div class="instagram-field">
+          <label for="instagram-preset-name">保存为预设</label>
+          <input id="instagram-preset-name" class="instagram-input" data-focus-key="preset-name" data-settings-field="presetDraftName" type="text" value="Luna 预设" placeholder="例如：主号 / 剧情号 / 工作号">
+        </div>
+        <div class="instagram-modal__inline-actions">
+          <button type="button" class="instagram-pill-button instagram-pill-button--muted" data-action="save-profile-preset">另存为预设</button>
+        </div>
+        <div class="instagram-preset-list">
+          <div class="instagram-empty">还没有保存任何资料预设。</div>
+        </div>
+      </div>
+    
+        </div>
+      
+          </div>
+          <div class="instagram-prompt-card__footer">
+            
+        <button type="button" class="instagram-prompt-card__button instagram-prompt-card__button--secondary" data-action="go-back">取消</button>
+        <button type="button" class="instagram-prompt-card__button instagram-prompt-card__button--primary" data-action="save-profile">保存</button>
+      
+          </div>
+        </section>
+      </div>
+    
+      </div>
+    </main>
+  <div id="done" style="position:fixed;left:-9999px;top:0;">done</div>
+  <pre id="result" style="position:fixed;left:-9999px;top:0;">{
+  "titles": {
+    "home": {
+      "present": true,
+      "action": "close-app",
+      "text": "Instagram\n未关联 USER 身份"
+    },
+    "reels": {
+      "present": true,
+      "action": "close-app",
+      "text": "Reels\n未关联 USER 身份"
+    },
+    "dms": {
+      "present": true,
+      "action": "close-app",
+      "text": "私信\n1 位联系人"
+    },
+    "search": {
+      "present": true,
+      "action": "close-app",
+      "text": "搜索\n联系人、USER 身份与主页内容"
+    },
+    "profile": {
+      "present": true,
+      "action": "close-app",
+      "text": "@luna.verse\n未关联 USER 身份"
+    }
+  },
+  "promptOpen": true,
+  "promptHeight": 629.265625,
+  "promptWidth": 344,
+  "promptTitle": "编辑资料",
+  "promptButtons": [
+    "取消",
+    "保存"
+  ],
+  "promptPresetVisible": true,
+  "promptScrollBefore": {
+    "scrollHeight": 1019,
+    "clientHeight": 481,
+    "scrollTop": 0
+  },
+  "promptScrollAfter": {
+    "scrollHeight": 1019,
+    "clientHeight": 481,
+    "scrollTop": 538
+  }
+}</pre>
+  <script src="./apps/instagram/instagram.js"></script>
+  <script>
+    const done = document.getElementById("done");
+    const result = document.getElementById("result");
+    const app = document.getElementById("instagram-app");
+    const tabs = ["home", "reels", "dms", "search", "profile"];
+
+    function sleep(ms) {
+      return new Promise((resolve) => window.setTimeout(resolve, ms));
+    }
+
+    async function waitFor(getter, timeout = 8000) {
+      const startedAt = Date.now();
+      while (Date.now() - startedAt < timeout) {
+        const value = getter();
+        if (value) {
+          return value;
+        }
+        await sleep(50);
+      }
+      throw new Error("waitFor timeout");
+    }
+
+    async function switchTo(tab) {
+      const button = await waitFor(() => app.querySelector(`[data-tab="${tab}"]`));
+      button.click();
+      await sleep(120);
+      return app.querySelector(".instagram-title-button");
+    }
+
+    async function run() {
+      try {
+        await waitFor(() => app.querySelector(".instagram-shell"));
+        const titles = {};
+
+        for (const tab of tabs) {
+          const titleButton = await switchTo(tab);
+          titles[tab] = {
+            present: Boolean(titleButton),
+            action: titleButton ? titleButton.dataset.action : "",
+            text: titleButton ? titleButton.innerText.trim() : ""
+          };
+        }
+
+        await switchTo("profile");
+
+        const editorTrigger = await waitFor(() => app.querySelector('[data-action="open-profile-editor"]'));
+        editorTrigger.click();
+        const promptCard = await waitFor(() => app.querySelector(".instagram-prompt-card"));
+        const promptBody = await waitFor(() => app.querySelector(".instagram-prompt-card__body"));
+        await waitFor(() => app.innerText.includes("资料预设"));
+        await sleep(150);
+
+        const before = {
+          scrollHeight: promptBody.scrollHeight,
+          clientHeight: promptBody.clientHeight,
+          scrollTop: promptBody.scrollTop
+        };
+
+        promptBody.scrollTop = promptBody.scrollHeight;
+        await sleep(150);
+
+        const after = {
+          scrollHeight: promptBody.scrollHeight,
+          clientHeight: promptBody.clientHeight,
+          scrollTop: promptBody.scrollTop
+        };
+
+        result.textContent = JSON.stringify({
+          titles,
+          promptOpen: Boolean(promptCard),
+          promptHeight: promptCard.getBoundingClientRect().height,
+          promptWidth: promptCard.getBoundingClientRect().width,
+          promptTitle: app.querySelector(".instagram-prompt-card__title")?.innerText || "",
+          promptButtons: Array.from(app.querySelectorAll(".instagram-prompt-card__button")).map((item) => item.innerText.trim()),
+          promptPresetVisible: app.innerText.includes("资料预设"),
+          promptScrollBefore: before,
+          promptScrollAfter: after
+        }, null, 2);
+        done.textContent = "done";
+      } catch (error) {
+        result.textContent = JSON.stringify({
+          error: String(error && error.message ? error.message : error)
+        }, null, 2);
+        done.textContent = "error";
+      }
+    }
+
+    window.addEventListener("load", () => {
+      void run();
+    });
+  </script>
+
+
+</body></html>
